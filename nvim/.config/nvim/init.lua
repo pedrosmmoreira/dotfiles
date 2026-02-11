@@ -78,6 +78,7 @@ require("lazy").setup({
       })
     end,
   },
+
   -- LSP
   {
     "mason-org/mason-lspconfig.nvim",
@@ -90,6 +91,27 @@ require("lazy").setup({
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       "neovim/nvim-lspconfig",
+    },
+  },
+
+  -- Autocompletion
+  {
+    "saghen/blink.cmp",
+    version = "1.*",
+    opts = {
+      keymap = {
+        preset = "default",
+        -- default uses C-y to accept, but these feel more natural:
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+      },
+      completion = {
+        documentation = { auto_show = true },
+      },
+      sources = {
+        default = { "lsp", "path", "buffer" },
+      },
     },
   },
 
