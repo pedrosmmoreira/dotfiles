@@ -8,7 +8,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # ----------------------------------------
 # Mise (version manager)
 # ----------------------------------------
-# We'll fill this in when we set up mise
+eval "$(mise activate zsh)"
 
 # ----------------------------------------
 # Aliases
