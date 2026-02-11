@@ -154,6 +154,48 @@ require("lazy").setup({
     end,
   },
 
+  -- Themes
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = true,
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = true,
+    opts = {
+      variant = "moon",
+    },
+  },
+
+  -- Surround (replaces vim-surround)
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    opts = {},
+  },
+
+  -- Linting
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
+        ruby = { "rubocop" },
+        typescript = { "eslint" },
+        javascript = { "eslint" },
+        typescriptreact = { "eslint" },
+      }
+
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
+  },
+
 })
 
 -- ==========================================================================
@@ -224,3 +266,8 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom split" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top split" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+
+-- ==========================================================================
+-- Theme
+-- ==========================================================================
+vim.cmd.colorscheme("rose-pine-moon")
