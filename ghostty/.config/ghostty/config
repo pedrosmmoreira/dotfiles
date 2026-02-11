@@ -1,6 +1,5 @@
 # Automatic dark/light switching
-# theme = dark:Rose Pine Moon,light:Rose Pine Dawn
-theme = catppuccin-mocha.conf
+theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 
 # Font
 font-family = Berkeley Mono

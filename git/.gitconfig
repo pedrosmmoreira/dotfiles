@@ -1,0 +1,22 @@
+[user]
+    name = Pedro Moreira
+    email = pedro@pedrosmmoreira.com
+
+[init]
+    defaultBranch = main
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    lg = log --oneline --graph --decorate
