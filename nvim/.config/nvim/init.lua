@@ -196,6 +196,75 @@ require("lazy").setup({
     end,
   },
 
+  -- Git signs in the gutter
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs = {
+        add          = { text = "▎" },
+        change       = { text = "▎" },
+        delete       = { text = "" },
+        topdelete    = { text = "" },
+        changedelete = { text = "▎" },
+      },
+      on_attach = function(buf)
+        local gs = require("gitsigns")
+        local map = function(mode, keys, func, desc)
+          vim.keymap.set(mode, keys, func, { buffer = buf, desc = desc })
+        end
+
+        map("n", "]h", gs.next_hunk, "Next hunk")
+        map("n", "[h", gs.prev_hunk, "Previous hunk")
+        map("n", "<Leader>gp", gs.preview_hunk, "Preview hunk")
+        map("n", "<Leader>gb", gs.blame_line, "Blame line")
+        map("n", "<Leader>gr", gs.reset_hunk, "Reset hunk")
+      end,
+    },
+  },
+
+  -- Status line
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      options = {
+        theme = "auto",
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { { "filename", path = 1 } },
+        lualine_x = { "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+    },
+  },
+
+  -- Auto-close brackets and quotes
+  {
+    "echasnovski/mini.pairs",
+    version = "*",
+    opts = {},
+  },
+
+  -- Better diagnostics list
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    config = function()
+      require("trouble").setup()
+
+      vim.keymap.set("n", "<Leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (project)" })
+      vim.keymap.set("n", "<Leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", { desc = "Diagnostics (buffer)" })
+      vim.keymap.set("n", "<Leader>xl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location list" })
+      vim.keymap.set("n", "<Leader>xq", "<cmd>Trouble quickfix toggle<CR>", { desc = "Quickfix list" })
+    end,
+  },
+
 })
 
 -- ==========================================================================

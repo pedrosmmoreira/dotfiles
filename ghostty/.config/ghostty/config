@@ -3,8 +3,8 @@ theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 
 # Font
 font-family = Berkeley Mono
-font-size = 16
-adjust-cell-height = 20%
+font-size = 14
+adjust-cell-height = 50%
 font-feature = calt
 font-feature = liga
 
@@ -15,8 +15,8 @@ cursor-style-blink = false
 # Window
 window-padding-x = 12
 window-padding-y = 8
-macos-titlebar-style = hidden
-background-opacity = 0.99
+# macos-titlebar-style = hidden
+# background-opacity = 0.99
 
 # Shell integration
 shell-integration = detect
