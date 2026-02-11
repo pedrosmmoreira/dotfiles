@@ -296,6 +296,7 @@ vim.opt.ruler = true
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
 vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "80"
 
 -- Show trailing whitespace
 vim.opt.list = true
@@ -340,3 +341,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
 -- Theme
 -- ==========================================================================
 vim.cmd.colorscheme("rose-pine-moon")
+
+-- Set color column
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#2a273f" })
