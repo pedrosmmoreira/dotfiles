@@ -1,0 +1,40 @@
+# Minimal prompt that shows what matters for Rails/TS dev
+format = """
+$directory\
+$git_branch\
+$git_status\
+$ruby\
+$nodejs\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = "[$branch]($style) "
+style = "purple"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "red"
+
+[ruby]
+format = "[$symbol$version]($style) "
+symbol = "💎 "
+detect_files = ["Gemfile", ".ruby-version"]
+
+[nodejs]
+format = "[$symbol$version]($style) "
+detect_files = ["package.json", ".node-version"]
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style) "
+style = "yellow"
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
