@@ -115,6 +115,45 @@ require("lazy").setup({
     },
   },
 
+  -- Test runner (same as thoughtbot)
+  {
+    "vim-test/vim-test",
+    config = function()
+      vim.g["test#strategy"] = "neovim"        -- run tests in a Neovim terminal split
+      vim.g["test#neovim#term_position"] = "below" -- terminal opens at the bottom
+
+      vim.keymap.set("n", "<Leader>tn", ":TestNearest<CR>", { silent = true, desc = "Test nearest" })
+      vim.keymap.set("n", "<Leader>tf", ":TestFile<CR>", { silent = true, desc = "Test file" })
+      vim.keymap.set("n", "<Leader>ts", ":TestSuite<CR>", { silent = true, desc = "Test suite" })
+      vim.keymap.set("n", "<Leader>tl", ":TestLast<CR>", { silent = true, desc = "Test last" })
+      vim.keymap.set("n", "<Leader>tv", ":TestVisit<CR>", { silent = true, desc = "Visit test file" })
+    end,
+  },
+
+  -- Formatting
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          ruby = { "rubocop" },
+          typescript = { "prettier" },
+          typescriptreact = { "prettier" },
+          javascript = { "prettier" },
+          css = { "prettier" },
+          html = { "prettier" },
+          json = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+        },
+        format_on_save = {
+          timeout_ms = 2000,
+          lsp_format = "fallback",  -- use LSP formatting if no formatter configured
+        },
+      })
+    end,
+  },
+
 })
 
 -- ==========================================================================
