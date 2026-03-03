@@ -47,6 +47,10 @@ backup_if_exists() {
 backup_if_exists ".zshrc"
 backup_if_exists ".gitconfig"
 backup_if_exists ".gitignore_global"
+backup_if_exists ".config/ghostty/config"
+backup_if_exists ".config/mise/config.toml"
+backup_if_exists ".config/nvim/init.lua"
+backup_if_exists ".config/starship.toml"
 
 for dir in ghostty git mise nvim starship zsh; do
   echo "    Stowing $dir..."
